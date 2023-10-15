@@ -1,14 +1,8 @@
 # app_contactos_python
 
 Crear base de datos
-CREATE DATABASE contactos;
-create table empleados (
-    id int AUTO_INCREMENT primary key,
-    nombre varchar(50),
-    apellido varchar(50),
-    telefono varchar(50),
-    email varchar(50)
-    );
+![image](https://github.com/AdriGPlayer/app_contactos_python/assets/130609122/9856e52b-e74d-4640-bdbc-29b734a2668a)
+
 
 
     
