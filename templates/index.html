@@ -1,0 +1,80 @@
+{% extends 'layout.html' %} {% block body %}
+<div class="row">
+  <div class="col-md-5">
+    {%with messages = get_flashed_messages()%} {%if messages%} {%for message in
+    messages%}
+
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <p>{{message}}</p>
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {%endfor%} {%endif%} {%endwith%}
+    <div class="card card-body">
+      <form action="/add" method="POST">
+        <div class="from-group">
+          <input
+            type="text"
+            name="nombre"
+            placeholder="nombre"
+            class="form-control mt-3"
+          />
+          <input
+            type="text"
+            name="apellido"
+            placeholder="apellido"
+            class="form-control mt-3"
+          />
+          <input
+            type="text"
+            name="telefono"
+            placeholder="telefono"
+            class="form-control mt-3"
+          />
+          <input
+            type="text"
+            name="email"
+            placeholder="email"
+            class="form-control mt-3"
+          />
+          <div class="container form-group pt-4">
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <table class="table table-striped table-bordered bg-white table-sm">
+      <thead>
+        <tr>
+          <td>Nombre</td>
+          <td>Apellido</td>
+          <td>Telefono</td>
+          <td>Email</td>
+          <td>Operaciones</td>
+        </tr>
+      </thead>
+      <tbody>
+        {%for contacto in contactos:%}
+        <tr>
+          <td>{{contacto.1}}</td>
+          <td>{{contacto.2}}</td>
+          <td>{{contacto.3}}</td>
+          <td>{{contacto.4}}</td>
+          <td>
+            <a href="/edit/{{contacto.0}}" class="btn btn-secondary">Editar</a>
+            <a href="/delete/{{contacto.0}}" class="btn btn-danger">Eliminar</a>
+          </td>
+        </tr>
+        {%endfor%}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+{% endblock %}
